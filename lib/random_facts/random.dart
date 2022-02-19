@@ -5,6 +5,7 @@ import 'package:http/http.dart';
 
 class RandomFacts extends StatefulWidget {
   final String category;
+
   const RandomFacts(this.category, {Key? key}) : super(key: key);
 
   @override
@@ -45,9 +46,9 @@ class _RandomFactsState extends State<RandomFacts> {
                     },
                     style: ButtonStyle(
                       backgroundColor:
-                      MaterialStateProperty.all(Colors.deepOrange),
+                          MaterialStateProperty.all(Colors.deepOrange),
                       minimumSize:
-                      MaterialStateProperty.all(Size(_width, _height)),
+                          MaterialStateProperty.all(Size(_width, _height)),
                       side: MaterialStateProperty.all(
                         const BorderSide(
                           color: Colors.black,
@@ -63,7 +64,7 @@ class _RandomFactsState extends State<RandomFacts> {
                     child: const Text(
                       'MORE',
                       style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                     ),
                   ),
                 ),
@@ -74,10 +75,9 @@ class _RandomFactsState extends State<RandomFacts> {
                       Navigator.pop(context);
                     },
                     style: ButtonStyle(
-                      backgroundColor:
-                      MaterialStateProperty.all(Colors.brown),
+                      backgroundColor: MaterialStateProperty.all(Colors.brown),
                       minimumSize:
-                      MaterialStateProperty.all(Size(_width, _height)),
+                          MaterialStateProperty.all(Size(_width, _height)),
                       side: MaterialStateProperty.all(
                         const BorderSide(
                           color: Colors.black,
@@ -93,7 +93,7 @@ class _RandomFactsState extends State<RandomFacts> {
                     child: const Text(
                       'BACK',
                       style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                     ),
                   ),
                 ),
@@ -118,16 +118,18 @@ class _GetJoke extends StatelessWidget {
           if (data == null) {
             return const CircularProgressIndicator();
           }
-          return Text(data.toString(), style: const TextStyle(
-            fontSize: 32,
-          ),
-          textAlign: TextAlign.center,);
+          return Text(
+            data.toString(),
+            style: const TextStyle(
+              fontSize: 32,
+            ),
+            textAlign: TextAlign.center,
+          );
         });
   }
 }
 
 const _baseUrl = 'https://api.chucknorris.io/jokes/random';
-
 
 Future<String> _fetchJoke() async {
   final response = await get(Uri.parse('$_baseUrl'));
@@ -135,4 +137,3 @@ Future<String> _fetchJoke() async {
   print(test['value']);
   return test['value'].toString();
 }
-

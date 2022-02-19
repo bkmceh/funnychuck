@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:funnychuck/about_project/project-info.dart';
-import 'package:funnychuck/random_facts/random.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class MainPage extends StatelessWidget {
-  const MainPage({Key? key}) : super(key: key);
+class ProjectInfo extends StatelessWidget {
+  const ProjectInfo({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final double _width = MediaQuery.of(context).size.width - 100;
-    final double _buttonWidth = MediaQuery.of(context).size.width - 170;
+    final double _width = MediaQuery.of(context).size.width - 170;
     final double _height = MediaQuery.of(context).size.width / 5;
     return Scaffold(
       backgroundColor: Colors.blue.shade400,
@@ -16,30 +14,32 @@ class MainPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 50),
-                  child: SizedBox(
-                    child: Image.asset("assets/images/logo.png"),
-                    width: _width,
+                  child: Container(
+                    padding: const EdgeInsets.all(20.0),
+                    alignment: Alignment.center,
+                    width: 350,
+                    height: 310,
+                    child: const Text("This is project for funny"),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20.0),
+                        border: Border.all()),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 50),
+                  padding: const EdgeInsets.only(top: 30),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: ((context) =>
-                                  const RandomFacts("Ilsur privet"))));
+                      _launchURL();
                     },
                     style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all(Colors.deepOrange),
-                      minimumSize: MaterialStateProperty.all(
-                          Size(_buttonWidth, _height)),
+                      minimumSize:
+                          MaterialStateProperty.all(Size(_width, _height)),
                       side: MaterialStateProperty.all(
                         const BorderSide(
                           color: Colors.black,
@@ -53,35 +53,7 @@ class MainPage extends StatelessWidget {
                       ),
                     ),
                     child: const Text(
-                      'RANDOM FACTS',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 30),
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.deepOrange),
-                      minimumSize: MaterialStateProperty.all(
-                          Size(_buttonWidth, _height)),
-                      side: MaterialStateProperty.all(
-                        const BorderSide(
-                          color: Colors.black,
-                          width: 3,
-                        ),
-                      ),
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
-                    ),
-                    child: const Text(
-                      'CATEGORIES',
+                      'TELEGRAM 📝',
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                     ),
@@ -91,15 +63,12 @@ class MainPage extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 30),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: ((context) => const ProjectInfo())));
+                      Navigator.pop(context);
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.brown),
-                      minimumSize: MaterialStateProperty.all(
-                          Size(_buttonWidth, _height)),
+                      minimumSize:
+                          MaterialStateProperty.all(Size(_width, _height)),
                       side: MaterialStateProperty.all(
                         const BorderSide(
                           color: Colors.black,
@@ -113,7 +82,7 @@ class MainPage extends StatelessWidget {
                       ),
                     ),
                     child: const Text(
-                      'ABOUT PROJECT',
+                      'BACK',
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                     ),
@@ -126,4 +95,10 @@ class MainPage extends StatelessWidget {
       ),
     );
   }
+}
+
+const String _url = 'https://t.me/inforest';
+
+void _launchURL() async {
+  if (!await launch(_url)) throw 'Could not launch $_url';
 }
