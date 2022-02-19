@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:http/http.dart';
 
 class RandomFacts extends StatefulWidget {
-  const RandomFacts({Key? key}) : super(key: key);
+  final String category;
+  const RandomFacts(this.category, {Key? key}) : super(key: key);
 
   @override
   _RandomFactsState createState() => _RandomFactsState();
@@ -27,10 +30,7 @@ class _RandomFactsState extends State<RandomFacts> {
                     alignment: Alignment.center,
                     width: 350,
                     height: 310,
-                    child: const Text("TEST",
-                        style: TextStyle(
-                          fontSize: 28.0,
-                        )),
+                    child: SingleChildScrollView(child: _GetJoke()),
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20.0),
@@ -40,7 +40,9 @@ class _RandomFactsState extends State<RandomFacts> {
                 Padding(
                   padding: const EdgeInsets.only(top: 30),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {});
+                    },
                     style: ButtonStyle(
                       backgroundColor:
                       MaterialStateProperty.all(Colors.deepOrange),
@@ -103,3 +105,34 @@ class _RandomFactsState extends State<RandomFacts> {
     );
   }
 }
+
+class _GetJoke extends StatelessWidget {
+  const _GetJoke({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<String>(
+        future: _fetchJoke(),
+        builder: (context, snapshot) {
+          final data = snapshot.data;
+          if (data == null) {
+            return const CircularProgressIndicator();
+          }
+          return Text(data.toString(), style: const TextStyle(
+            fontSize: 32,
+          ),
+          textAlign: TextAlign.center,);
+        });
+  }
+}
+
+const _baseUrl = 'https://api.chucknorris.io/jokes/random';
+
+
+Future<String> _fetchJoke() async {
+  final response = await get(Uri.parse('$_baseUrl'));
+  Map<String, Object?> test = jsonDecode(response.body);
+  print(test['value']);
+  return test['value'].toString();
+}
+

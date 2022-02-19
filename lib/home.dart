@@ -31,7 +31,7 @@ class MainPage extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: ((context) => RandomFacts())));
+                              builder: ((context) => const RandomFacts("Ilsur privet"))));
                     },
                     style: ButtonStyle(
                       backgroundColor:
