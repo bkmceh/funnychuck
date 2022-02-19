@@ -11,7 +11,7 @@ class RandomFacts extends StatefulWidget {
 class _RandomFactsState extends State<RandomFacts> {
   @override
   Widget build(BuildContext context) {
-    final double _width = MediaQuery.of(context).size.width - 100;
+    final double _width = MediaQuery.of(context).size.width - 170;
     final double _height = MediaQuery.of(context).size.width / 5;
     return Scaffold(
       backgroundColor: Colors.blue.shade400,
@@ -73,7 +73,7 @@ class _RandomFactsState extends State<RandomFacts> {
                     },
                     style: ButtonStyle(
                       backgroundColor:
-                      MaterialStateProperty.all(Colors.deepOrange),
+                      MaterialStateProperty.all(Colors.brown),
                       minimumSize:
                       MaterialStateProperty.all(Size(_width, _height)),
                       side: MaterialStateProperty.all(

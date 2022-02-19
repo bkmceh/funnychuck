@@ -7,6 +7,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double _width = MediaQuery.of(context).size.width - 100;
+    final double _buttonWidth = MediaQuery.of(context).size.width - 170;
     final double _height = MediaQuery.of(context).size.width / 5;
     return Scaffold(
       backgroundColor: Colors.blue.shade400,
@@ -36,7 +37,7 @@ class MainPage extends StatelessWidget {
                       backgroundColor:
                           MaterialStateProperty.all(Colors.deepOrange),
                       minimumSize:
-                          MaterialStateProperty.all(Size(_width, _height)),
+                          MaterialStateProperty.all(Size(_buttonWidth, _height)),
                       side: MaterialStateProperty.all(
                         const BorderSide(
                           color: Colors.black,
@@ -64,7 +65,7 @@ class MainPage extends StatelessWidget {
                       backgroundColor:
                       MaterialStateProperty.all(Colors.deepOrange),
                       minimumSize:
-                      MaterialStateProperty.all(Size(_width, _height)),
+                      MaterialStateProperty.all(Size(_buttonWidth, _height)),
                       side: MaterialStateProperty.all(
                         const BorderSide(
                           color: Colors.black,
@@ -90,9 +91,9 @@ class MainPage extends StatelessWidget {
                     onPressed: () {},
                     style: ButtonStyle(
                       backgroundColor:
-                      MaterialStateProperty.all(Colors.deepOrange),
+                      MaterialStateProperty.all(Colors.brown),
                       minimumSize:
-                      MaterialStateProperty.all(Size(_width, _height)),
+                      MaterialStateProperty.all(Size(_buttonWidth, _height)),
                       side: MaterialStateProperty.all(
                         const BorderSide(
                           color: Colors.black,
