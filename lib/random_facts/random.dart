@@ -35,7 +35,7 @@ class _RandomFactsState extends State<RandomFacts> {
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20.0),
-                        border: Border.all()),
+                        border: Border.all(width: 3)),
                   ),
                 ),
                 Padding(
