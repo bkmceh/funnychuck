@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:funnychuck/about_project/project-info.dart';
+import 'package:funnychuck/categories/categories.dart';
 import 'package:funnychuck/random_facts/random.dart';
 
 class MainPage extends StatelessWidget {
@@ -33,7 +34,7 @@ class MainPage extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: ((context) =>
-                                  const RandomFacts("Ilsur privet"))));
+                                  const RandomFacts(""))));
                     },
                     style: ButtonStyle(
                       backgroundColor:
@@ -62,7 +63,13 @@ class MainPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 30),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: ((context) =>
+                              const Categories())));
+                    },
                     style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all(Colors.deepOrange),

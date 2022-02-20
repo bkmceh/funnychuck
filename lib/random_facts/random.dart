@@ -31,7 +31,8 @@ class _RandomFactsState extends State<RandomFacts> {
                     alignment: Alignment.center,
                     width: 350,
                     height: 310,
-                    child: SingleChildScrollView(child: _GetJoke()),
+                    child:
+                        SingleChildScrollView(child: _GetJoke(widget.category)),
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20.0),
@@ -107,16 +108,18 @@ class _RandomFactsState extends State<RandomFacts> {
 }
 
 class _GetJoke extends StatelessWidget {
-  const _GetJoke({Key? key}) : super(key: key);
+  final String category;
+
+  const _GetJoke(this.category);
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<String>(
-        future: _fetchJoke(),
+        future: _fetchJoke(category),
         builder: (context, snapshot) {
           final data = snapshot.data;
           if (data == null) {
-            return const CircularProgressIndicator();
+            return const CircularProgressIndicator(color: Colors.deepOrange);
           }
           return Text(
             data.toString(),
@@ -131,8 +134,13 @@ class _GetJoke extends StatelessWidget {
 
 const _baseUrl = 'https://api.chucknorris.io/jokes/random';
 
-Future<String> _fetchJoke() async {
-  final response = await get(Uri.parse('$_baseUrl'));
+Future<String> _fetchJoke(final String category) async {
+  var response;
+  if (category.isEmpty) {
+    response = await get(Uri.parse('$_baseUrl'));
+  } else {
+    response = await get(Uri.parse('$_baseUrl?category=$category'));
+  }
   Map<String, Object?> test = jsonDecode(response.body);
   print(test['value']);
   return test['value'].toString();
