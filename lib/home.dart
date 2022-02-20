@@ -33,8 +33,7 @@ class MainPage extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: ((context) =>
-                                  const RandomFacts(""))));
+                              builder: ((context) => const RandomFacts(""))));
                     },
                     style: ButtonStyle(
                       backgroundColor:
@@ -67,8 +66,7 @@ class MainPage extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: ((context) =>
-                              const Categories())));
+                              builder: ((context) => const Categories())));
                     },
                     style: ButtonStyle(
                       backgroundColor:

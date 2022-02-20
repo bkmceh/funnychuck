@@ -8,6 +8,7 @@ class ProjectInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     final double _width = MediaQuery.of(context).size.width - 170;
     final double _height = MediaQuery.of(context).size.width / 5;
+    final double _windowWidth = MediaQuery.of(context).size.width - 80;
     return Scaffold(
       backgroundColor: Colors.blue.shade400,
       body: SafeArea(
@@ -20,9 +21,16 @@ class ProjectInfo extends StatelessWidget {
                   child: Container(
                     padding: const EdgeInsets.all(20.0),
                     alignment: Alignment.center,
-                    width: 350,
-                    height: 310,
-                    child: const Text("This is project for funny"),
+                    width: _windowWidth,
+                    height: _windowWidth,
+                    child: const SingleChildScrollView(
+                      child: Text(
+                          "Made by student of Innopolis University in 2022 for flutter elective.\n"
+                          "This application uses chucknorris.io API for showing funny Chuck Norris facts. Enjoy!\n"
+                          "Telegram contact below",
+                          style: TextStyle(fontSize: 32),
+                          textAlign: TextAlign.center),
+                    ),
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20.0),

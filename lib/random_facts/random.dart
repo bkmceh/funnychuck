@@ -15,8 +15,9 @@ class RandomFacts extends StatefulWidget {
 class _RandomFactsState extends State<RandomFacts> {
   @override
   Widget build(BuildContext context) {
-    final double _width = MediaQuery.of(context).size.width - 170;
-    final double _height = MediaQuery.of(context).size.width / 5;
+    final double _buttonWidth = MediaQuery.of(context).size.width - 170;
+    final double _buttonHeight = MediaQuery.of(context).size.width / 5;
+    final double _windowWidth = MediaQuery.of(context).size.width - 80;
     return Scaffold(
       backgroundColor: Colors.blue.shade400,
       body: SafeArea(
@@ -29,8 +30,8 @@ class _RandomFactsState extends State<RandomFacts> {
                   child: Container(
                     padding: const EdgeInsets.all(20.0),
                     alignment: Alignment.center,
-                    width: 350,
-                    height: 310,
+                    width: _windowWidth,
+                    height: _windowWidth,
                     child:
                         SingleChildScrollView(child: _GetJoke(widget.category)),
                     decoration: BoxDecoration(
@@ -48,8 +49,8 @@ class _RandomFactsState extends State<RandomFacts> {
                     style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all(Colors.deepOrange),
-                      minimumSize:
-                          MaterialStateProperty.all(Size(_width, _height)),
+                      minimumSize: MaterialStateProperty.all(
+                          Size(_buttonWidth, _buttonHeight)),
                       side: MaterialStateProperty.all(
                         const BorderSide(
                           color: Colors.black,
@@ -77,8 +78,8 @@ class _RandomFactsState extends State<RandomFacts> {
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.brown),
-                      minimumSize:
-                          MaterialStateProperty.all(Size(_width, _height)),
+                      minimumSize: MaterialStateProperty.all(
+                          Size(_buttonWidth, _buttonHeight)),
                       side: MaterialStateProperty.all(
                         const BorderSide(
                           color: Colors.black,
@@ -119,10 +120,11 @@ class _GetJoke extends StatelessWidget {
         builder: (context, snapshot) {
           final data = snapshot.data;
           if (data == null) {
-            return const CircularProgressIndicator(color: Colors.deepOrange);
+            return const CircularProgressIndicator(
+                color: Colors.deepOrange, strokeWidth: 7);
           }
           return Text(
-            data.toString(),
+            data,
             style: const TextStyle(
               fontSize: 32,
             ),
@@ -135,13 +137,13 @@ class _GetJoke extends StatelessWidget {
 const _baseUrl = 'https://api.chucknorris.io/jokes/random';
 
 Future<String> _fetchJoke(final String category) async {
-  var response;
+  Response response;
   if (category.isEmpty) {
-    response = await get(Uri.parse('$_baseUrl'));
+    response = await get(Uri.parse(_baseUrl));
   } else {
     response = await get(Uri.parse('$_baseUrl?category=$category'));
   }
-  Map<String, Object?> test = jsonDecode(response.body);
-  print(test['value']);
-  return test['value'].toString();
+  Map<String, Object?> responseMap = jsonDecode(response.body);
+  String joke = responseMap['value'].toString();
+  return joke;
 }
