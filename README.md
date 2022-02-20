@@ -1,16 +1,11 @@
 # funnychuck
+![alt text](https://api.chucknorris.io/img/chucknorris_logo_coloured_small@2x.png)
 
 Assignment 1 for Cross-platform Mobile Development with Flutter
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Information
+This application uses [chucknorris.io](https://api.chucknorris.io) API for showing funny Chuck Norris facts. 
+Enjoy!
+APK for Android you can find [here](https://github.com/bkmceh/funnychuck/tree/master/apk)
+## Screenshots of application
+The main page
+![alt text](https://github.com/bkmceh/funnychuck/tree/master/screenshots/main.png)
