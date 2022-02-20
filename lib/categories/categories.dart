@@ -84,7 +84,7 @@ class _GetCategories extends StatelessWidget {
                       },
                       style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all(Colors.deepOrange),
+                            MaterialStateProperty.all(Colors.deepOrange.shade700),
                         minimumSize:
                             MaterialStateProperty.all(Size(_width, _width)),
                         side: MaterialStateProperty.all(
@@ -102,7 +102,7 @@ class _GetCategories extends StatelessWidget {
                       child: Text(
                         data[index].toUpperCase(),
                         style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 24),
+                            fontWeight: FontWeight.bold, fontSize: 20),
                       ),
                     ),
                   );

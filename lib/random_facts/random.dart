@@ -18,6 +18,7 @@ class _RandomFactsState extends State<RandomFacts> {
     final double _buttonWidth = MediaQuery.of(context).size.width - 170;
     final double _buttonHeight = MediaQuery.of(context).size.width / 5;
     final double _windowWidth = MediaQuery.of(context).size.width - 80;
+    final double _windowHeight = MediaQuery.of(context).size.height / 2;
     return Scaffold(
       backgroundColor: Colors.blue.shade400,
       body: SafeArea(
@@ -31,7 +32,7 @@ class _RandomFactsState extends State<RandomFacts> {
                     padding: const EdgeInsets.all(20.0),
                     alignment: Alignment.center,
                     width: _windowWidth,
-                    height: _windowWidth,
+                    height: _windowHeight,
                     child:
                         SingleChildScrollView(child: _GetJoke(widget.category)),
                     decoration: BoxDecoration(
@@ -48,7 +49,7 @@ class _RandomFactsState extends State<RandomFacts> {
                     },
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all(Colors.deepOrange),
+                          MaterialStateProperty.all(Colors.deepOrange.shade700),
                       minimumSize: MaterialStateProperty.all(
                           Size(_buttonWidth, _buttonHeight)),
                       side: MaterialStateProperty.all(

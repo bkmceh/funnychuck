@@ -9,6 +9,7 @@ class ProjectInfo extends StatelessWidget {
     final double _width = MediaQuery.of(context).size.width - 170;
     final double _height = MediaQuery.of(context).size.width / 5;
     final double _windowWidth = MediaQuery.of(context).size.width - 80;
+    final double _windowHeight = MediaQuery.of(context).size.height / 2;
     return Scaffold(
       backgroundColor: Colors.blue.shade400,
       body: SafeArea(
@@ -22,7 +23,7 @@ class ProjectInfo extends StatelessWidget {
                     padding: const EdgeInsets.all(20.0),
                     alignment: Alignment.center,
                     width: _windowWidth,
-                    height: _windowWidth,
+                    height: _windowHeight,
                     child: const SingleChildScrollView(
                       child: Text(
                           "Made by student of Innopolis University in 2022 for flutter elective.\n"

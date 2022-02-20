@@ -9,8 +9,8 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double _width = MediaQuery.of(context).size.width - 100;
-    final double _buttonWidth = MediaQuery.of(context).size.width - 170;
-    final double _height = MediaQuery.of(context).size.width / 5;
+    final double _buttonWidth = MediaQuery.of(context).size.width - 140;
+    final double _height = MediaQuery.of(context).size.height / 9;
     return Scaffold(
       backgroundColor: Colors.blue.shade400,
       body: SafeArea(
@@ -37,8 +37,8 @@ class MainPage extends StatelessWidget {
                     },
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all(Colors.deepOrange),
-                      minimumSize: MaterialStateProperty.all(
+                          MaterialStateProperty.all(Colors.deepOrange.shade700),
+                      fixedSize: MaterialStateProperty.all(
                           Size(_buttonWidth, _height)),
                       side: MaterialStateProperty.all(
                         const BorderSide(
@@ -56,6 +56,7 @@ class MainPage extends StatelessWidget {
                       'RANDOM FACTS',
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),
@@ -70,8 +71,8 @@ class MainPage extends StatelessWidget {
                     },
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all(Colors.deepOrange),
-                      minimumSize: MaterialStateProperty.all(
+                          MaterialStateProperty.all(Colors.deepOrange.shade700),
+                      fixedSize: MaterialStateProperty.all(
                           Size(_buttonWidth, _height)),
                       side: MaterialStateProperty.all(
                         const BorderSide(
@@ -103,7 +104,7 @@ class MainPage extends StatelessWidget {
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(Colors.brown),
-                      minimumSize: MaterialStateProperty.all(
+                      fixedSize: MaterialStateProperty.all(
                           Size(_buttonWidth, _height)),
                       side: MaterialStateProperty.all(
                         const BorderSide(
@@ -121,6 +122,7 @@ class MainPage extends StatelessWidget {
                       'ABOUT PROJECT',
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                 ),

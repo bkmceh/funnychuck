@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ru.inforest.funnychuck">
-   <application
-        android:label="funnychuck"
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <application
+        android:label="Funny Chuck"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -30,5 +31,5 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-    </application>
+   </application>
 </manifest>
